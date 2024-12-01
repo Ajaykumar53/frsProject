@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Upload</title>
+  <link rel="stylesheet" href="/output.css">
+</head>
+
+<body class="bg-gray-100">
+  <!-- Navbar -->
+  <%- include('./partials/navbar.ejs') %>
+    <p>
+
+    </p>
+    <div class="bg-gray-100 text-black max-h-screen flex items-center justify-center pt-10">
+      <div class="w-full max-w-md border border-black rounded-lg shadow-lg p-6 bg-white ">
+        <h2 class="text-xl font-bold text-center mb-6">
+          <%= editing ? "Edit Product" : "Upload Product" %>
+        </h2>
+        <form action=" <%= editing ?  " /edit-product" :"/add-product" %>" method="POST" class="space-y-4">
+          <!-- Product Name -->
+          <% if (editing) { %>
+            <input type="hidden" name="productId" value="<%=product.productId%>">
+            <% } %>
+              <div>
+                <label for="productName" class="block text-sm font-medium mb-1">Product Name</label>
+                <input type="text" id="productName" name="productName" placeholder="Enter product name"
+                  value="<%= editing ? product.productName : "" %>"
+                  class="w-full border border-black rounded px-3 py-2 focus:outline-none focus:ring focus:ring-gray-400 text-sm"
+                  required>
+              </div>
+
+              <!-- Product Description -->
+              <div>
+                <label for="productDescription" class="block text-sm font-medium mb-1">Product Description</label>
+                <textarea id="productDescription" name="productDescription" rows="3"
+                  placeholder="Enter product description"
+                  class="w-full border border-black rounded px-3 py-2 focus:outline-none focus:ring focus:ring-gray-400 text-sm"
+                  required><%= editing ? product.productDescription : "" %></textarea>
+              </div>
+
+              <!-- Product Price -->
+              <div>
+                <label for="productPrice" class="block text-sm font-medium mb-1">Product Price ($)</label>
+                <input type="number" id="productPrice" name="productPrice" placeholder="Enter product price"
+                  value="<%= editing ? product.productPrice : "" %>"
+                  class="w-full border border-black rounded px-3 py-2 focus:outline-none focus:ring focus:ring-gray-400 text-sm"
+                  required>
+              </div>
+
+              <!-- Product Image Upload -->
+              <div>
+                <label for="productImage" class="block text-sm font-medium mb-1">Product Image</label>
+                <input type="text" id="productImage" name="productImage"
+                  value="<%= editing ? product.productURL : "" %>"
+                  class="w-full border border-black rounded px-3 py-2 focus:outline-none focus:ring focus:ring-gray-400 text-sm"
+                  required>
+              </div>
+
+              <!-- Submit Button -->
+              <div>
+                <button type="submit"
+                  class="w-full bg-black text-white text-sm font-semibold py-2 rounded hover:bg-gray-900 focus:outline-none focus:ring focus:ring-gray-400 transition">
+                  <%= editing ? "Edit " : "Upload " %>
+                </button>
+              </div>
+        </form>
+      </div>
+    </div>
+</body>
+
+</html>

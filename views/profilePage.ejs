@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Page</title>
+  <link rel="stylesheet" href="/output.css">
+</head>
+
+<body class="">
+  <%- include('./partials/navbar.ejs') %>
+    <div class="bg-gray-100 max-h-screen flex items-center justify-center py-20">
+      <!-- Profile Card -->
+      <div class="max-w-lg w-full bg-white shadow-lg rounded-lg overflow-hidden">
+        <!-- Profile Header -->
+        <div class="bg-gradient-to-br from-gray-800 to-gray-900 text-white p-6">
+          <div class="flex items-center space-x-4">
+            <img src="https://via.placeholder.com/80" alt="Profile Photo"
+              class="w-20 h-20 rounded-full border-2 border-white shadow-md">
+            <div>
+              <h2 class="text-xl font-bold">John Doe</h2>
+              <p class="text-sm text-gray-300">johndoe@example.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="p-6 space-y-6">
+          <!-- Personal Info -->
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Personal Information</h3>
+            <div class="mt-4 space-y-2">
+              <div class="flex justify-between text-sm text-gray-600">
+                <span class="font-medium">Mobile Number:</span>
+                <span>+1 234 567 890</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-600">
+                <span class="font-medium">Gender:</span>
+                <span>Male</span>
+              </div>
+              <div class="flex justify-between text-sm text-gray-600">
+                <span class="font-medium">Email:</span>
+                <span>johndoe@example.com</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Orders -->
+          <div>
+            <h3 class="text-lg font-semibold text-gray-800 border-b pb-2">Orders</h3>
+            <ul class="mt-4 space-y-2">
+              <li class="flex justify-between text-sm text-gray-600">
+                <span>Order #12345</span>
+                <span class="text-gray-500">Delivered</span>
+              </li>
+              <li class="flex justify-between text-sm text-gray-600">
+                <span>Order #12346</span>
+                <span class="text-gray-500">In Transit</span>
+              </li>
+              <li class="flex justify-between text-sm text-gray-600">
+                <span>Order #12347</span>
+                <span class="text-gray-500">Cancelled</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex justify-end space-x-4">
+            <button class="bg-gray-800 text-white px-4 py-2 text-sm font-medium rounded hover:bg-gray-700 transition">
+              Edit Profile
+            </button>
+            <button class="bg-red-600 text-white px-4 py-2 text-sm font-medium rounded hover:bg-red-500 transition">
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>

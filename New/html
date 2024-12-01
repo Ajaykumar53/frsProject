@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Product Card</title>
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="/output.css">
+</head>
+
+<body class="bg-gray-100">
+  <%- include('./partials/navbar.ejs') %>
+    <!-- Product Grid -->
+    <div class="max-w-7xl mx-auto mt-10 p-6 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <!-- Product Card -->
+      <% products.forEach(product=> { %>
+        <div
+          class="bg-gray-800 border border-gray-700 rounded-md shadow-sm hover:shadow-md transition-shadow p-4 flex flex-col">
+          <!-- Product Image -->
+          <div class="relative overflow-hidden rounded-md">
+            <img src="<%= product.productURL %>" alt="Product Image" class="w-full h-36 object-cover">
+          </div>
+
+          <!-- Product Details -->
+          <div class="mt-3 flex flex-col flex-grow">
+            <!-- Title -->
+            <h3 class="text-sm font-semibold text-white truncate hover:text-gray-300">
+              <%= product.productName %>
+            </h3>
+            <!-- Description -->
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">
+              <%= product.productDescription %>
+            </p>
+
+            <!-- Price -->
+            <div class="mt-3 flex justify-between items-center">
+              <p class="text-sm font-bold text-white">$<%= product.productPrice %>
+              </p>
+              <!-- Add to Cart Button -->
+              <form action="/cart" method="post">
+                <button type="submit"
+                  class="text-xs font-medium bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-600 transition">
+                  Add
+                </button>
+                <input type="hidden" value="<%= product.productId %>" name="productId">
+              </form>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+    </div>
+</body>
+
+</html>

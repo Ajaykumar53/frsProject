@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compact Product Card</title>
+
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="/output.css">
+</head>
+
+<body class="bg-gray-100">
+  <!-- Navbar -->
+  <%- include('./partials/navbar.ejs') %>
+
+    <!-- Product Grid -->
+    <div class="flex flex-wrap gap-4 max-w-7xl mx-auto mt-6 p-4">
+      <% products.forEach(product=> { %>
+        <!-- Compact Product Card -->
+        <div
+          class="bg-white rounded-lg shadow hover:shadow-md transition-shadow overflow-hidden w-full   xl:w-[calc(20%-20px)] flex flex-col h-1/4">
+
+          <!-- Product Image -->
+          <div class="relative overflow-hidden ">
+            <img src="<%= product.productURL %>" alt="Product Image" class="w-full h-full">
+            <!-- Badge -->
+            <div
+              class="absolute top-2 left-2 bg-black bg-opacity-80 text-white text-xs font-semibold px-2 py-1 rounded">
+              <a href="/product-details/<%= product.productId %>">New</a>
+            </div>
+          </div>
+
+          <!-- Product Details -->
+          <div class="p-4 flex-grow flex flex-col justify-between bg-red-600">
+            <!-- Title -->
+            <h3 class="text-sm font-semibold text-gray-900 truncate">
+              <%= product.productName %>
+            </h3>
+
+            <!-- Description -->
+            <p class="text-xs text-gray-600 mt-1 line-clamp-2">
+              <%= product.productDescription %>
+            </p>
+
+            <!-- Price and Ratings -->
+            <div class="flex items-center justify-between mt-2">
+              <p class="text-sm font-bold text-gray-800">$<%= product.productPrice %>
+              </p>
+              <div class="flex items-center text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.813c.969 0 1.371 1.24.588 1.81l-3.89 2.828a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.89-2.828a1 1 0 00-1.176 0l-3.89 2.828c-.784.57-1.839-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.17 10.1c-.783-.57-.38-1.81.588-1.81h4.812a1 1 0 00.951-.69l1.518-4.674z" />
+                </svg>
+                <span class="ml-1 text-xs">(4.5)</span>
+              </div>
+            </div>
+
+            <!-- Add to Cart Button -->
+            <form action="/cart" method="post">
+              <button type="submit"
+                class="w-full mt-3 bg-black text-white text-xs font-semibold py-1 rounded hover:bg-gray-800 focus:outline-none transition">
+                Add to Cart
+              </button>
+              <input type="hidden" value="<%= product.productId %>" name="productId">
+            </form>
+          </div>
+        </div>
+        <% }) %>
+    </div>
+</body>
+
+</html>

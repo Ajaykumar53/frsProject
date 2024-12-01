@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | Fashion Recommendation System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
+    <div class="px-6 py-8">
+      <h1 class="text-3xl font-bold text-gray-900 text-center">
+        <%= signup ? "Sign Up" : "Login" %>
+      </h1>
+      <p class="text-gray-600 text-center mt-2">Discover Your Style</p>
+
+      <form action="<%= signup ? " /signup" : "/login" %>" method="POST" class="mt-6">
+
+        <!-- Name -->
+        <% if (signup===true) { %>
+          <div class="mb-4">
+            <label for="name" class="block text-gray-700 text-sm font-medium">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name"
+              class="mt-1 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500">
+          </div>
+          <% } %>
+            <!-- Email -->
+            <div class="mb-4">
+              <label for="email" class="block text-gray-700 text-sm font-medium">Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email"
+                class="mt-1 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500">
+            </div>
+            <!-- Password -->
+            <div class="mb-6">
+              <label for="password" class="block text-gray-700 text-sm font-medium">Password</label>
+              <input type="password" id="password" name="password" placeholder="Enter your password"
+                class="mt-1 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500">
+            </div>
+            <!-- Submit Button -->
+            <button type="submit"
+              class="w-full bg-black text-white font-medium py-2 px-4 rounded-md hover:bg-gray-700 transition duration-200">
+              <%= signup ? "Sign Up" : "Login" %>
+            </button>
+      </form>
+    </div>
+
+    <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
+      <% if (signup===true) { %>
+        <p class="text-center text-sm text-gray-600">Already have an account?
+          <a href="/login" class="text-gray-900 font-medium hover:underline">Log in</a>
+        </p>
+        <% }else { %>
+          <p class="text-center text-sm text-gray-600">Create account?
+            <a href="/signup" class="text-gray-900 font-medium hover:underline">sign Up</a>
+          </p>
+          <% } %>
+    </div>
+  </div>
+</body>
+
+</html>
